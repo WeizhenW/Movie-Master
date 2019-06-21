@@ -20,7 +20,6 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <p>MovieList</p>
         <pre>
             {JSON.stringify(this.props.reduxState.movies)}
         </pre>

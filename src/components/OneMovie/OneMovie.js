@@ -3,17 +3,6 @@ import { connect } from 'react-redux';
 
 
 class OneMovie extends Component {
-    componentDidMount() {
-        this.getMovies();
-    }
-
-
-    getMovies = () => {
-        this.props.dispatch({
-            type: 'FETCH_ALL_MOVIES',
-        })
-    }
-
 
   render() {
     return (
