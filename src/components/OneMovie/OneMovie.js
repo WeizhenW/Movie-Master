@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { throwStatement, jsxExpressionContainer } from '@babel/types';
 
 
 class OneMovie extends Component {

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+//router
+import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
+
 
 
 class Detail extends Component {
@@ -8,7 +11,8 @@ class Detail extends Component {
     return (
         <div>
             {/* {JSON.stringify(this.props.reduxState.oneMovie[0])} */}
-            <button>Back</button>
+            
+            <Link to="/"><button>Back</button></Link>
             <button>Edit</button>
             <br />
             <br />
