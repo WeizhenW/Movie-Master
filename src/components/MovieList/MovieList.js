@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OneMovie from '../OneMovie/OneMovie';
 
-
 class MovieList extends Component {
     //call getMovie function at page load
     componentDidMount() {

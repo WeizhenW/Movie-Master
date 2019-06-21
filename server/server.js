@@ -10,8 +10,22 @@ app.use(bodyParser.json()); // needed for angular requests
 app.use(express.static('build'));
 
 /** ---------- ROUTES ---------- **/
-app.use('/api/movies', (req, res) => {
+//route to get all movies
+app.get('/api/movies', (req, res) => {
     pool.query(`SELECT * FROM "movies";`).then(
+        result => {
+            res.send(result.rows);
+        }
+    ).catch(
+        error => {
+            console.log('error with get all movies', error);
+        }
+    )
+})
+//route to get one movie
+app.get('/api/movies/:id', (req, res) => {
+    pool.query(`SELECT * FROM "movies" WHERE "id"=$1`,
+    [req.params.id]).then(
         result => {
             res.send(result.rows);
         }
