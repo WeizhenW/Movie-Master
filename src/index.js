@@ -29,6 +29,7 @@ function* getOneMovie(action) {
         type: 'SET_ONE_MOVIE',
         payload: oneMovieResponse.data,
     })
+    
 }
 
 // Create the rootSaga generator function
@@ -52,7 +53,13 @@ const movies = (state = [], action) => {
 }
 
 // Used to store one movie returned from the server
-const oneMovie = (state = {}, action) => {
+const initialOneMovieState = [{
+    id: '',
+    title: '',
+    poster: '',
+    description: '',
+}]
+const oneMovie = (state = initialOneMovieState, action) => {
     switch (action.type) {
         case 'SET_ONE_MOVIE':
             return action.payload;

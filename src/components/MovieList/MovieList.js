@@ -20,10 +20,10 @@ class MovieList extends Component {
     return (
       <div>
         <pre>
-            {JSON.stringify(this.props.reduxState.movies)}
+            {/* {JSON.stringify(this.props.history)} */}
         </pre>
         <ul>
-            {this.props.reduxState.movies.map(movie => <OneMovie key={movie.id} movie={movie} />)}
+            {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
         </ul>
       </div>
     );

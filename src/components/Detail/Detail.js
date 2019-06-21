@@ -7,11 +7,14 @@ class Detail extends Component {
   render() {
     return (
         <div>
+            {/* {JSON.stringify(this.props.reduxState.oneMovie[0])} */}
             <button>Back</button>
             <button>Edit</button>
-            <img src={this.props.oneMovie.poster} onClick={this.handleClickPoster} />
-            <h3>{this.props.oneMovie.title}</h3>
-            <p>{this.props.oneMovie.description}</p>
+            <br />
+            <br />
+            <img src={this.props.reduxState.oneMovie[0].poster} />
+            <h3>{this.props.reduxState.oneMovie[0].title}</h3>
+            <p>{this.props.reduxState.oneMovie[0].description}</p>
         </div>
     );
   }
