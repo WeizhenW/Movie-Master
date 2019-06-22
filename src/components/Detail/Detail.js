@@ -29,7 +29,7 @@ class Detail extends Component {
             type: 'FETCH_ALL_GENRES',
         })
     }
-
+    //function to get the change
     handleChangeGenre = (event) => {
         this.setState({
             ...this.state,
