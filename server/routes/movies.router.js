@@ -3,6 +3,25 @@ const router = express.Router();
 
 const pool = require('../modules/pool');
 
+//route to get all genres per movie
+router.get('/allgenres', (req, res) => {
+    //using array agg
+    pool.query(`SELECT "movies"."title", array_agg("genres"."name") AS "genres"
+    FROM "movies"
+    JOIN "movie_genre" ON  "movies"."id"="movie_genre"."movie_id"
+    JOIN "genres" ON "genres"."id"="movie_genre"."genre_id"
+    GROUP BY "movies"."title";`).then(
+        result => {
+            res.send(result.rows);
+        }
+    ).catch(
+        error => {
+            console.log('error with get all genres per movie', error);
+            res.sendStatus(500);
+        }
+    )
+})
+
 //route to get all movies
 router.get('/', (req, res) => {
     pool.query(`SELECT * FROM "movies" ORDER BY "id";`).then(
@@ -46,5 +65,7 @@ router.put('/', (req, res) => {
         }
     )
 })
+
+
 
 module.exports =router;

@@ -105,6 +105,15 @@ function* removeGenreFromMovie(action) {
     }
 }
 
+//generator to get all genres per movie by using array agg
+function* getAllGenresArrAgg() {
+    const getAllGenresArrAggResponse = yield axios.get('/api/movies/allgenres');
+    yield put({
+        type: 'SET_GENRES_ARR_AGG',
+        payload: getAllGenresArrAggResponse.data,
+    })
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
         yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
@@ -114,6 +123,7 @@ function* rootSaga() {
         yield takeEvery('FETCH_ALL_GENRES', getAllGenres);
         yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
         yield takeEvery('REMOVE_GENRE_FROM_MOVIE', removeGenreFromMovie);
+        yield takeEvery('GET_ALL_GENRES_ARR_AGG', getAllGenresArrAgg);
 
     }
 
@@ -168,6 +178,16 @@ function* rootSaga() {
         }
     }
 
+    //reducer to store all genres per movie by using array agg
+    const allGenresPerMovie = (state=[], action) => {
+        switch(action.type) {
+            case 'SET_GENRES_ARR_AGG':
+                return action.payload;
+            default:
+                return state;
+        }
+    }
+
 
 
     // Create one store that all components can use
@@ -177,6 +197,7 @@ function* rootSaga() {
             allGenres,
             oneMovie,
             oneMovieGenres,
+            allGenresPerMovie
         }),
         // Add sagaMiddleware to our store
         applyMiddleware(sagaMiddleware, logger),
