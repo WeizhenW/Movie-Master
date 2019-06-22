@@ -24,7 +24,7 @@ router.get('/allgenres', (req, res) => {
 
 //route to get all movies
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM "movies" ORDER BY "id";`).then(
+    pool.query(`SELECT * FROM "movies" ORDER BY "id" LIMIT 10;`).then(
         result => {
             res.send(result.rows);
         }
