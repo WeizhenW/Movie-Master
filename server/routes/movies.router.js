@@ -24,13 +24,29 @@ router.get('/allgenres', (req, res) => {
 
 //route to get all movies
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM "movies" ORDER BY "id";`).then(
+    pool.query(`SELECT * FROM "movies" ORDER BY "id" LIMIT 10;`).then(
         result => {
             res.send(result.rows);
         }
     ).catch(
         error => {
             console.log('error with get all movies', error);
+            res.sendStatus(500);
+        }
+    )
+})
+
+//route to search for a specific movie
+router.get('/search', (req, res) => {
+    console.log(req.query);
+    pool.query(`SELECT * FROM "movies" WHERE "title" = $1;`,
+    [req.query.title]).then(
+        result => {
+            res.send(result.rows);
+        }
+    ).catch(
+        error => {
+            console.log('error with get one specific movie', error);
             res.sendStatus(500);
         }
     )
