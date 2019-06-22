@@ -7,10 +7,21 @@ import Edit from '../Edit/Edit';
 
 
 class Detail extends Component {
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'FETCH_ONE_MOVIE',
+            payload: this.props.match.params.id,
+        })
+        this.props.dispatch({
+            type: 'FETCH_GENRES_ONE_MOVIE',
+            payload: this.props.match.params.id,
+        })
+    }
    
   render() {
     return (
         <div>
+            {/* {JSON.stringify(this.props.match)} */}
             <Router>
                 <Route path="/edit" component={Edit} />
             </Router>

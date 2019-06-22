@@ -33,7 +33,7 @@ class Edit extends Component {
             type: 'UPDATE_ONE_MOVIE',
             payload: this.state.movie,
         })
-        this.props.history.push('/details');
+        this.props.history.push(`/details/${this.state.movie.id}`);
     }
 
     render() {
