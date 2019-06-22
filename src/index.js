@@ -65,12 +65,26 @@ function* getGenresOneMovie(action) {
     }
 }
 
+//generator to get genres for all
+function* getAllGenres() {
+    try{
+        const responseAllGenres = yield axios.get('/api/genres');
+        yield put ({
+            type: 'SET_ALL_GENRES',
+            payload: responseAllGenres.data,
+        })
+    } catch(error) {
+        console.log('error with getAllGenres', error);
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', getOneMovie);
     yield takeEvery('UPDATE_ONE_MOVIE', putOneMovie);
     yield takeEvery('FETCH_GENRES_ONE_MOVIE', getGenresOneMovie);
+    yield takeEvery('FETCH_ALL_GENRES', getAllGenres);
 
 }
 
@@ -105,10 +119,10 @@ const oneMovie = (state = initialOneMovieState, action) => {
     }
 }
 
-// reducer to store the movie genres
-const genres = (state = [], action) => {
+// reducer to store the genres for all movies
+const allGenres = (state = [], action) => {
     switch (action.type) {
-        case 'SET_GENRES':
+        case 'SET_ALL_GENRES':
             return action.payload;
         default:
             return state;
@@ -131,7 +145,7 @@ const oneMovieGenres = (state=[], action) => {
 const storeInstance = createStore(
     combineReducers({
         movies,
-        genres,
+        allGenres,
         oneMovie,
         oneMovieGenres,
     }),
