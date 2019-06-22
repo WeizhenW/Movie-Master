@@ -5,17 +5,17 @@ import { connect } from 'react-redux';
 class OneMovie extends Component {
     handleClickPoster = () => {
         //dispatch action to trigger the get request on one movie information from db
-        this.props.dispatch({
-            type: 'FETCH_ONE_MOVIE',
-            payload: this.props.movie.id,
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_ONE_MOVIE',
+        //     payload: this.props.movie.id,
+        // })
         //dispatch action to trigger the get request on genres for one movie from db
-        this.props.dispatch({
-            type: 'FETCH_GENRES_ONE_MOVIE',
-            payload: this.props.movie.id,
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_GENRES_ONE_MOVIE',
+        //     payload: this.props.movie.id,
+        // })
         //reroute to /details
-        this.props.history.push('/details');
+        this.props.history.push(`/details/${this.props.movie.id}`);
     }
 
     render() {
