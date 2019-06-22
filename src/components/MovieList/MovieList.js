@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import OneMovie from '../OneMovie/OneMovie';
 import Search from '../Search/Search';
 
+import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
+
+
+
+
 class MovieList extends Component {
   //call getMovie function at page load
   componentDidMount() {
@@ -28,6 +33,7 @@ class MovieList extends Component {
       <div>
         <h1>Movie Master</h1>
         <Search />
+        <Link to="/admin">Go to Admin</Link>
         <ul>
           {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
         </ul>
