@@ -129,6 +129,30 @@ function* searchOneMovie(action) {
     }
 }
 
+//function to post new genre to the db
+function* postNewGenre(action) {
+    try {
+        yield axios.post('/api/genres/new', action.payload );
+        yield put({
+            type: 'FETCH_ALL_GENRES',
+        })
+    } catch(error) {
+        console.log('error with postNewGenre', error);
+    }
+}
+
+//function to delete genre from db table
+function* deleteGenreFromDB(action) {
+    try {
+        yield axios.delete(`/api/genres/delete/${action.payload}`);
+        yield put({
+            type: 'FETCH_ALL_GENRES',
+        })
+    } catch(error) {
+        console.log('error with deleteGenreFromDB', error);
+}
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
@@ -140,6 +164,8 @@ function* rootSaga() {
     yield takeEvery('REMOVE_GENRE_FROM_MOVIE', removeGenreFromMovie);
     yield takeEvery('GET_ALL_GENRES_ARR_AGG', getAllGenresArrAgg);
     yield takeEvery('GET_SEARCH_RESULT', searchOneMovie);
+    yield takeEvery('POST_NEW_GENRE', postNewGenre);
+    yield takeEvery('DELETE_GENRE_FROM_DB', deleteGenreFromDB);
 
 }
 
