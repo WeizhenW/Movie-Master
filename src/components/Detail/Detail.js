@@ -7,6 +7,7 @@ import Edit from '../Edit/Edit';
 
 
 class Detail extends Component {
+   
 
   render() {
     return (
@@ -23,6 +24,12 @@ class Detail extends Component {
             <img src={this.props.reduxState.oneMovie[0].poster} />
             <h3>{this.props.reduxState.oneMovie[0].title}</h3>
             <p>{this.props.reduxState.oneMovie[0].description}</p>
+            {/* {JSON.stringify(this.props.reduxState.oneMovieGenres)} */}
+            <ul>
+                {this.props.reduxState.oneMovieGenres.map(genre => {
+                   return <li key={genre.genre_id}>{genre.name}</li>
+                })}
+            </ul>
         </div>
     );
   }

@@ -9,6 +9,10 @@ class OneMovie extends Component {
             type: 'FETCH_ONE_MOVIE',
             payload: this.props.movie.id,
         })
+        this.props.dispatch({
+            type: 'FETCH_GENRES_ONE_MOVIE',
+            payload: this.props.movie.id,
+        })
         this.props.history.push('/details');
     }
 
