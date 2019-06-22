@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 //router
 import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
 
+import Edit from '../Edit/Edit';
 
 
 class Detail extends Component {
@@ -11,9 +12,12 @@ class Detail extends Component {
     return (
         <div>
             {/* {JSON.stringify(this.props.reduxState.oneMovie[0])} */}
-            
+            <Router>
+                <Route path="/edit" component={Edit} />
+            </Router>
+            <p>Detail page</p>
             <Link to="/"><button>Back</button></Link>
-            <button>Edit</button>
+            <Link to="/edit"><button>Edit</button></Link>
             <br />
             <br />
             <img src={this.props.reduxState.oneMovie[0].poster} />

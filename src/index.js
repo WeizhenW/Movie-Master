@@ -32,6 +32,9 @@ function* getOneMovie(action) {
     
 }
 
+//generator to update one movie
+function* putOneMovie
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
