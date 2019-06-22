@@ -6,7 +6,11 @@ import './Search.css';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-
+const styles = {
+    button: {
+        margin: 20,
+    }
+}
 class Search extends Component {
     state = {
         movieName: '',
@@ -36,11 +40,13 @@ class Search extends Component {
             <div className="searchDiv">
                 <TextField 
                 variant="outlined"
-                placeholder="search a movie" 
+                placeholder="search a movie by title" 
                 value={this.state.movieName} 
-                onChange={this.handleNameInput}></TextField>
-                <Button variant="contained" color="primary" onClick={this.handleSearch}>Search</Button>
-                <Button variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
+                onChange={this.handleNameInput}
+                fullWidth></TextField>
+                <br />
+                <Button style={styles.button} variant="contained" color="primary" onClick={this.handleSearch}>Search</Button>
+                <Button style={styles.button} variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
             </div>
         );
     }
