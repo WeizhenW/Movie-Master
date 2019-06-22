@@ -34,32 +34,36 @@ class Edit extends Component {
             type: 'UPDATE_ONE_MOVIE',
             payload: this.state,
         })
+        this.props.history.push('/details');
     }
 
-  render() {
-    return (
-        <div>
-            <input 
-                placeholder="title" 
-                value={this.state.title}
-                onChange={this.handleChangeFor('title')}></input>
-            <input
-                // type="textarea" 
-                placeholder="description"
-                value={this.state.description}
-                onChange={this.handleChangeFor('description')}></input>
-            <button onClick={this.handleCancel}>Cancel</button>
-            <button onClick={this.handleSave}>Save</button>
-            {JSON.stringify(this.state)}
+    render() {
+        return (
+            <div>
+                <input
+                    placeholder="title"
+                    value={this.state.title}
+                    onChange={this.handleChangeFor('title')} />
+                <br />
+                <textarea
+                    // type="textarea" 
+                    placeholder="description"
+                    value={this.state.description}
+                    onChange={this.handleChangeFor('description')} />
+                <br />
+                <button onClick={this.handleCancel}>Cancel</button>
+                <br />
+                <button onClick={this.handleSave}>Save</button>
+                {/* {JSON.stringify(this.state)} */}
 
-            <br />
+                <br />
 
-            <img src={this.props.reduxState.oneMovie[0].poster} />
-            <h3>{this.props.reduxState.oneMovie[0].title}</h3>
-            <p>{this.props.reduxState.oneMovie[0].description}</p>
-        </div>
-    );
-  }
+                <img src={this.props.reduxState.oneMovie[0].poster} />
+                <h3>{this.props.reduxState.oneMovie[0].title}</h3>
+                <p>{this.props.reduxState.oneMovie[0].description}</p>
+            </div>
+        );
+    }
 }
 const mapReduxStateToProps = reduxState => ({
     reduxState,
