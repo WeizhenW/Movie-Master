@@ -16,7 +16,7 @@ class Edit extends Component {
     //on click cancel button, go back to detail page
     //thanks to reducer the one movie information is still accessible
     handleCancel = () => {
-        this.props.history.push('/details');
+        this.props.history.push(`/details/${this.state.movie.id}`);
     }
     //function to get input and store information at local state
     handleChangeFor = (propertyName) => (event) => {
