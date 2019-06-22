@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OneMovie from '../OneMovie/OneMovie';
+import Search from '../Search/Search';
 
 class MovieList extends Component {
   //call getMovie function at page load
@@ -26,6 +27,7 @@ class MovieList extends Component {
     return (
       <div>
         <h1>Movie Master</h1>
+        <Search />
         <ul>
           {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
         </ul>
