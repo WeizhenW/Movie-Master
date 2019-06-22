@@ -7,32 +7,31 @@ import Detail from '../Detail/Detail';
 
 
 class Edit extends Component {
+    //initialize state with reducer state
+    //oneMovie reducer state is an array with one obj
+    state = {
+        movie: this.props.reduxState.oneMovie[0],
+    };
 
-    state = {};
-
-    componentDidMount() {
-        this.setState({
-            ...this.state,
-            ...this.props.reduxState.oneMovie[0]
-        })
-    }
-
+    //on click cancel button, go back to detail page
+    //thanks to reducer the one movie information is still accessible
     handleCancel = () => {
         this.props.history.push('/details');
     }
-
+    //function to get input and store information at local state
     handleChangeFor = (propertyName) => (event) => {
-        // console.log('handlechange', propertyName);
-        // console.log(event.target.value);
         this.setState({
-            [propertyName]: event.target.value,
+            movie: {
+                ...this.state.movie,
+                [propertyName]: event.target.value,
+            }
         })
     }
-
+    //function to dispatch the put route and redirect to /details
     handleSave = () => {
         this.props.dispatch({
             type: 'UPDATE_ONE_MOVIE',
-            payload: this.state,
+            payload: this.state.movie,
         })
         this.props.history.push('/details');
     }
@@ -42,19 +41,18 @@ class Edit extends Component {
             <div>
                 <input
                     placeholder="title"
-                    value={this.state.title}
+                    value={this.state.movie.title}
                     onChange={this.handleChangeFor('title')} />
                 <br />
                 <textarea
                     // type="textarea" 
                     placeholder="description"
-                    value={this.state.description}
+                    value={this.state.movie.description}
                     onChange={this.handleChangeFor('description')} />
                 <br />
                 <button onClick={this.handleCancel}>Cancel</button>
                 <br />
                 <button onClick={this.handleSave}>Save</button>
-                {/* {JSON.stringify(this.state)} */}
 
                 <br />
 

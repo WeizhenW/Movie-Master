@@ -10,7 +10,7 @@ import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
-
+//import axios
 import axios from 'axios';
 
 //generator to get all movies
@@ -88,6 +88,7 @@ const movies = (state = [], action) => {
 }
 
 // reducer to store one movie returned from the server
+//initialize the start state
 const initialOneMovieState = [{
     id: '',
     title: '',
