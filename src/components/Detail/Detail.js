@@ -36,13 +36,24 @@ class Detail extends Component {
             genreId: event.target.value,
         })
     }
-    
+    //function to dispatch to trigger the post route
     handleAddGenre = () => {
         this.props.dispatch({
             type: 'ADD_GENRE_TO_MOVIE',
             payload: this.state,
             }
         )
+    }
+    //function to dispatch to trigger the delete route
+    handleDeleteGenre = (event) => {
+        console.log(event.target.id)
+        this.props.dispatch({
+            type: 'REMOVE_GENRE_FROM_MOVIE',
+            payload: {
+                movieId: this.props.match.params.id,
+                genreId: event.target.id,
+            }
+        })
     }
 
         
@@ -68,20 +79,26 @@ class Detail extends Component {
                 <h3>This Movie's Genres</h3>
                 <ul>
                     {this.props.reduxState.oneMovieGenres.map(genre => {
-                        return <li key={genre.genre_id}>{genre.name}</li>
+                        return <li 
+                            // display genre name
+                            key={genre.genre_id}>{genre.name}
+                            {/* button click to delete */}
+                            <button onClick={this.handleDeleteGenre} id={genre.id}>Delete genre</button>
+                        </li>
                     })}
                 </ul>
                 <h3>All Genres</h3>
+                {/* create ddl */}
                 <select onChange={this.handleChangeGenre}>
+                    {/* default selection at page load => disabled so that won't be selected */}
                     <option selected disabled>Please select</option>
-                {this.props.reduxState.allGenres.map(genre => {
+                    {this.props.reduxState.allGenres.map(genre => {
+                        // value used to pass the selected genre id to server
                         return <option value={genre.id} key={genre.id}>{genre.name}</option>
                     })}
                 </select>
                 <button onClick={this.handleAddGenre}>Add Genre</button>
-                <ul>
-                    
-                </ul>
+              
             </div>
         );
     }

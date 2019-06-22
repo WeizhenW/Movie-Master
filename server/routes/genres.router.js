@@ -50,4 +50,20 @@ router.post('/:movieid', (req, res) => {
     )
 })
 
+//route to delete one genre from one movie
+//delete request doesn't accept req.body...
+router.delete('/:movieid/:genreid', (req, res) => {
+    pool.query(`DELETE FROM "movie_genre" WHERE "movie_id"=$1 AND "genre_id"=$2;`,
+    [req.params.movieid, req.params.genreid]).then(
+        () => {
+            res.sendStatus(200);
+        }
+    ).catch(
+        error => {
+            console.log('error with delete one genre from one movie', error);
+            res.sendStatus(500);
+        }
+    )
+})
+
 module.exports =router;
