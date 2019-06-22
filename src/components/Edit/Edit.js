@@ -25,8 +25,7 @@ class Edit extends Component {
         // console.log('handlechange', propertyName);
         // console.log(event.target.value);
         this.setState({
-            ...this.state,
-            ...{[propertyName]: event.target.value},
+            [propertyName]: event.target.value,
         })
     }
 
@@ -40,7 +39,6 @@ class Edit extends Component {
   render() {
     return (
         <div>
-
             <input 
                 placeholder="title" 
                 value={this.state.title}

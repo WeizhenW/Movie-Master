@@ -15,30 +15,44 @@ import axios from 'axios';
 
 //generator to get all movies
 function* getAllMovies() {
-    const allMoviesResponse = yield axios.get('/api/movies');
-    yield put({
-        type: 'SET_MOVIES',
-        payload: allMoviesResponse.data,
-    })
+    try {
+        const allMoviesResponse = yield axios.get('/api/movies');
+        yield put({
+            type: 'SET_MOVIES',
+            payload: allMoviesResponse.data,
+        })
+    } catch (error) {
+        console.log('error with getAllMovies', error);
+    }
 }
 
 //generator to get one movie
 function* getOneMovie(action) {
-    const oneMovieResponse = yield axios.get(`/api/movies/${action.payload}`);
-    yield put({
-        type: 'SET_ONE_MOVIE',
-        payload: oneMovieResponse.data,
-    })
-    
+    try {
+        const oneMovieResponse = yield axios.get(`/api/movies/${action.payload}`);
+        yield put({
+            type: 'SET_ONE_MOVIE',
+            payload: oneMovieResponse.data,
+        })
+    } catch(error) {
+        console.log('error with getOneMovie', error);
+    }
 }
 
 //generator to update one movie
-function* putOneMovie
+function* putOneMovie(action) {
+    try {    
+        yield axios.put('/api/movies', action.payload)
+    } catch(error) {
+        console.log('error with putOneMovie', error);
+    }
+}
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', getOneMovie);
+    yield takeEvery('UPDATE_ONE_MOVIE', putOneMovie);
 
 }
 
@@ -95,6 +109,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();
