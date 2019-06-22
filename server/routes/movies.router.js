@@ -5,6 +5,7 @@ const pool = require('../modules/pool');
 
 //route to get all genres per movie
 router.get('/allgenres', (req, res) => {
+    //using array agg
     pool.query(`SELECT "movies"."title", array_agg("genres"."name") AS "genres"
     FROM "movies"
     JOIN "movie_genre" ON  "movies"."id"="movie_genre"."movie_id"

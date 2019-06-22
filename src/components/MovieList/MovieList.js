@@ -30,8 +30,8 @@ class MovieList extends Component {
           {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
         </ul>
 
-        {/* {JSON.stringify(this.props.reduxState.allGenresPerMovie)} */}
         {/* display movie genres by using array agg */}
+        <h3>All Genres per Movie</h3>
         <ul>
           {this.props.reduxState.allGenresPerMovie.map(movie => {
             return <li key={movie.title}>{movie.title}
