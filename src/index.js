@@ -29,7 +29,7 @@ function* getAllMovies() {
 //generator to get one movie
 function* getOneMovie(action) {
     try {
-        const oneMovieResponse = yield axios.get(`/api/movies/search?title=${action.payload}`);
+        const oneMovieResponse = yield axios.get(`/api/movies/${action.payload}`);
         yield put({
             type: 'SET_ONE_MOVIE',
             payload: oneMovieResponse.data,

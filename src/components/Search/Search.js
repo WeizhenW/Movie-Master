@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Search.css';
+
+//material ui
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 class Search extends Component {
@@ -8,7 +13,6 @@ class Search extends Component {
     }
 
     handleNameInput = (event) => {
-        // console.log(event.target.value);
         this.setState({
             movieName: event.target.value,
         })
@@ -29,13 +33,14 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
-                <input 
+            <div className="searchDiv">
+                <TextField 
+                variant="outlined"
                 placeholder="search a movie" 
                 value={this.state.movieName} 
-                onChange={this.handleNameInput}></input>
-                <button onClick={this.handleSearch}>Search</button>
-                <button onClick={this.handleGoBack}>Go back</button>
+                onChange={this.handleNameInput}></TextField>
+                <Button variant="contained" color="primary" onClick={this.handleSearch}>Search</Button>
+                <Button variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
             </div>
         );
     }

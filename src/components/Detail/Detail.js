@@ -5,6 +5,30 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
 
 import Edit from '../Edit/Edit';
 
+//material ui
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
+
+const styles = {
+    card: {
+        width: '60%',
+        margin: '20px auto',
+        padding: 20,
+    },
+    button: {
+        margin: '20px',
+    },
+    grid: {
+        width: '60%',
+        margin: '20px auto',
+    }
+}
+
 
 class Detail extends Component {
     //initialize local state with router params and empty string
@@ -41,7 +65,7 @@ class Detail extends Component {
         this.props.dispatch({
             type: 'ADD_GENRE_TO_MOVIE',
             payload: this.state,
-            }
+        }
         )
     }
     //function to dispatch to trigger the delete route
@@ -56,9 +80,6 @@ class Detail extends Component {
         })
     }
 
-        
-    
-
     render() {
         return (
             <div>
@@ -67,26 +88,43 @@ class Detail extends Component {
                     <Route path="/edit" component={Edit} />
                 </Router>
                 {/* buttons */}
-                <Link to="/"><button>Back</button></Link>
-                <Link to="/edit"><button>Edit</button></Link>
+                <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
+                <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
                 <br />
                 <br />
-                <img src={this.props.reduxState.oneMovie[0].poster} />
-                <h3>{this.props.reduxState.oneMovie[0].title}</h3>
-                <p>{this.props.reduxState.oneMovie[0].description}</p>
-
+                
+                <Card style={styles.card}>
+                    <CardMedia>
+                        <img src={this.props.reduxState.oneMovie[0].poster} />
+                    </CardMedia>
+                    <CardHeader>
+                    <h3>{this.props.reduxState.oneMovie[0].title}</h3>
+                    </CardHeader>
+                    <CardContent>
+                    <p>{this.props.reduxState.oneMovie[0].description}</p>
+                    </CardContent>
+                </Card>
                 {/* below display the genres */}
+                <Grid container style={styles.grid}>
+                    <Grid item sm={12} md={6}>
                 <h3>This Movie's Genres</h3>
-                <ul>
+                
                     {this.props.reduxState.oneMovieGenres.map(genre => {
-                        return <li 
+                        return <Button
                             // display genre name
-                            key={genre.genre_id}>{genre.name}
-                            {/* button click to delete */}
-                            <button onClick={this.handleDeleteGenre} id={genre.id}>Delete genre</button>
-                        </li>
+                            key={genre.genre_id}
+                            // button click to delete
+                            onClick={this.handleDeleteGenre} 
+                            id={genre.id}
+                            variant="contained"
+                            color="primary"
+                            style={styles.button}>
+                            {genre.name}
+                        </Button>
                     })}
-                </ul>
+                
+                </Grid>
+                <Grid item sm={12} md={6}>
                 <h3>All Genres</h3>
                 {/* create ddl */}
                 <select onChange={this.handleChangeGenre}>
@@ -98,7 +136,8 @@ class Detail extends Component {
                     })}
                 </select>
                 <button onClick={this.handleAddGenre}>Add Genre</button>
-              
+                </Grid>
+                </Grid>
             </div>
         );
     }
