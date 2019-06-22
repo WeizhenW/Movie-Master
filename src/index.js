@@ -56,6 +56,7 @@ function* putOneMovie(action) {
 function* getGenresOneMovie(action) {
     try {
         const responseGenresOneMovie = yield axios.get(`/api/genres/${action.payload}`);
+        // console.log(responseGenresOneMovie);
         yield put({
             type: 'SET_GENRES_ONE_MOVIE',
             payload: responseGenresOneMovie.data,
@@ -78,6 +79,19 @@ function* getAllGenres() {
     }
 }
 
+//generator to add one genre to one movie
+function* addGenreToMovie(action) {
+    try{
+        yield axios.post(`/api/genres/${action.payload.movieId}`, action.payload);
+        yield put({
+            type:'FETCH_GENRES_ONE_MOVIE',
+            payload: action.payload.movieId,
+        })
+    } catch(error) {
+        console.log('error with addGenreToMovie', error);
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
@@ -85,6 +99,7 @@ function* rootSaga() {
     yield takeEvery('UPDATE_ONE_MOVIE', putOneMovie);
     yield takeEvery('FETCH_GENRES_ONE_MOVIE', getGenresOneMovie);
     yield takeEvery('FETCH_ALL_GENRES', getAllGenres);
+    yield takeEvery('ADD_GENRE_TO_MOVIE', addGenreToMovie);
 
 }
 
