@@ -93,12 +93,13 @@ class Detail extends Component {
                     <Route path="/edit" component={Edit} />
                 </Router>
                 {/* buttons */}
+                <Card style={styles.card}>
                 <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
                 <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
                 <br />
                 <br />
                 
-                <Card style={styles.card}>
+                
                     <CardMedia>
                         <img src={this.props.reduxState.oneMovie[0].poster} />
                     </CardMedia>
@@ -108,7 +109,7 @@ class Detail extends Component {
                     <CardContent>
                     <p>{this.props.reduxState.oneMovie[0].description}</p>
                     </CardContent>
-                </Card>
+                
                 {/* below display the genres */}
                 <Grid container style={styles.grid}>
                     <Grid item sm={12} md={6}>
@@ -143,6 +144,7 @@ class Detail extends Component {
                 <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add Genre</Button>
                 </Grid>
                 </Grid>
+                </Card>
             </div>
         );
     }

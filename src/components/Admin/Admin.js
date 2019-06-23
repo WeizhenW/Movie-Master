@@ -10,7 +10,7 @@ class Admin extends Component {
   state = {
     userName: '',
     password: '',
-    correctLogin: false,
+    correctLogin: true,
   }
   handleChangeFor = (propertyName) => (event) => {
     this.setState({

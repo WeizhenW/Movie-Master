@@ -1,55 +1,98 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
+const styles = {
+    table: {
+        width: '50%',
+        margin: '20px auto',
+        fontSize: '16px',
+        textAlign: 'center',
+    },
+    deleteIcon: {
+        color: 'red',
+    },
+    button: {
+        marginLeft: 30,
+    }
+}
 
 class AdminComponent extends Component {
-  state = {
-      genre: '',
-  }
+    state = {
+        genre: '',
+    }
 
-  componentDidMount() {
-      this.props.dispatch({
-          type: 'FETCH_ALL_GENRES'
-      })
-  };
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'FETCH_ALL_GENRES'
+        })
+    };
 
-  handleChange = (event) => {
-      this.setState({
-          genre: event.target.value,
-      })
-  }
+    handleChange = (event) => {
+        this.setState({
+            genre: event.target.value,
+        })
+    }
 
-  handleClick = () => {
-      this.props.dispatch({
-          type: 'POST_NEW_GENRE',
-          payload: this.state,
-      })
-  }
+    handleClick = () => {
+        this.props.dispatch({
+            type: 'POST_NEW_GENRE',
+            payload: this.state,
+        })
+    }
 
-  handleDelete = (event) => {
-      this.props.dispatch({
-          type:'DELETE_GENRE_FROM_DB',
-          payload: event.target.id,
-      })
-  }
+    handleDelete = (event) => {
+        console.log(event.target);
+        this.props.dispatch({
+            type: 'DELETE_GENRE_FROM_DB',
+            payload: event.target.id,
+        })
+    }
 
-  render() {
-    return (
-      <div>
-        <input placeholder="add genre" onChange={this.handleChange}></input>
-        <button onClick={this.handleClick}>Add</button>
-        <ul>
-            {this.props.reduxState.allGenres.map(genre => {
-                return <li 
-                    key={genre.id}>{genre.name}
-                    <button id={genre.id} onClick={this.handleDelete}>Delete</button>
-                </li>
-            })}
-        </ul>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <TextField
+                    placeholder="add genre"
+                    variant="outlined"
+                    onChange={this.handleChange} />
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={styles.button}
+                    onClick={this.handleClick}>
+                    Add
+                </Button>
+                <Table style={styles.table}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Genre</TableCell>
+                            <TableCell>Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.reduxState.allGenres.map(genre => {
+                            return <TableRow key={genre.id}>
+                                <TableCell>{genre.name}</TableCell>
+                                <TableCell><button id={genre.id} onClick={this.handleDelete}>X</button></TableCell>
+                            </TableRow>
+                        })}
+                    </TableBody>
+                </Table>
+            </div>
+        );
+    }
 }
 const mapReduxStateToProps = reduxState => ({
-  reduxState,
+    reduxState,
 });
 export default connect(mapReduxStateToProps)(AdminComponent);

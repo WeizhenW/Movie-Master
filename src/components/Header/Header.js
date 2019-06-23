@@ -6,11 +6,10 @@ import { HashRouter as Router, NavLink, } from 'react-router-dom'; //alias
 
 import Admin from '../Admin/Admin';
 
-class App extends Component {
+class Header extends Component {
     // Renders the entire app on the DOM
     render() {
         return (
-            <div className="App">
                 <div className="header">
                     <h1>Movie Master</h1>
                     <Router>
@@ -20,9 +19,8 @@ class App extends Component {
                         </nav>
                     </Router>
                 </div>
-            </div>
         );
     }
 }
 
-export default App;
+export default Header;

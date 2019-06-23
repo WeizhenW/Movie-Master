@@ -9,13 +9,15 @@ import Detail from '../Detail/Detail';
 import Edit from '../Edit/Edit';
 import Admin from '../Admin/Admin';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return (
       <div className="App">
-       <Header />
+        <Header />
         <Router>
           <Route path="/" exact component={MovieList} />
           <Route path="/details/:id" exact component={Detail} />
@@ -23,6 +25,7 @@ class App extends Component {
           <Route path="/admin" component={Admin} />
         </Router>
         {/* <MovieList /> */}
+        <Footer />
       </div>
     );
   }
