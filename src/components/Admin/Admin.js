@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AdminComponent from '../AdminComponent/AdminComponent';
+import './Admin.css';
+
+import Button from '@material-ui/core/Button';
+
 
 class Admin extends Component {
   state = {
@@ -25,19 +29,19 @@ class Admin extends Component {
 
   render() {
     return (
-      <div>
-        {/* {JSON.stringify(this.state)} */}
+      <div className="admin">
         {this.state.correctLogin?
         <>
-        <p>correct</p>
         <AdminComponent />
         </>
         :
-        <>
-        <input onChange={this.handleChangeFor('userName')} placeholder="user name" />
-        <input onChange={this.handleChangeFor('password')} placeholder="password" />
-        <button onClick={this.handleSubmit}>Log In</button>
-      </>
+        <div className="loginDiv">
+        <input id="userName" onChange={this.handleChangeFor('userName')} placeholder="user name" />
+        <br />
+        <input id="psw" onChange={this.handleChangeFor('password')} placeholder="password" />
+        <br />
+        <Button variant="contained" color="primary" onClick={this.handleSubmit}>Log In</Button>
+      </div>
         }
       
         

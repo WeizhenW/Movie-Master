@@ -12,6 +12,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 const styles = {
@@ -26,6 +28,9 @@ const styles = {
     grid: {
         width: '60%',
         margin: '20px auto',
+    },
+    menuItem: {
+        width: 100,
     }
 }
 
@@ -70,7 +75,7 @@ class Detail extends Component {
     }
     //function to dispatch to trigger the delete route
     handleDeleteGenre = (event) => {
-        console.log(event.target.id)
+        console.log(event.target)
         this.props.dispatch({
             type: 'REMOVE_GENRE_FROM_MOVIE',
             payload: {
@@ -110,32 +115,32 @@ class Detail extends Component {
                 <h3>This Movie's Genres</h3>
                 
                     {this.props.reduxState.oneMovieGenres.map(genre => {
-                        return <Button
+                        return <button
                             // display genre name
                             key={genre.genre_id}
                             // button click to delete
                             onClick={this.handleDeleteGenre} 
-                            id={genre.id}
+                            id={genre.genre_id}
                             variant="contained"
                             color="primary"
                             style={styles.button}>
                             {genre.name}
-                        </Button>
+                        </button>
                     })}
-                
                 </Grid>
+
                 <Grid item sm={12} md={6}>
                 <h3>All Genres</h3>
                 {/* create ddl */}
-                <select onChange={this.handleChangeGenre}>
+                <Select onChange={this.handleChangeGenre}>
                     {/* default selection at page load => disabled so that won't be selected */}
-                    <option selected disabled>Please select</option>
+                    <MenuItem style={styles.menuItem} disabled>Please select</MenuItem>
                     {this.props.reduxState.allGenres.map(genre => {
                         // value used to pass the selected genre id to server
-                        return <option value={genre.id} key={genre.id}>{genre.name}</option>
+                        return <MenuItem style={styles.menuItem} value={genre.id} key={genre.id}>{genre.name}</MenuItem>
                     })}
-                </select>
-                <button onClick={this.handleAddGenre}>Add Genre</button>
+                </Select>
+                <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add Genre</Button>
                 </Grid>
                 </Grid>
             </div>

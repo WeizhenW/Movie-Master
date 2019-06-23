@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './OneMovie.css';
+
 //material ui
 import Grid from '@material-ui/core/Grid';
 
