@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
 
 //route to get all genres from db
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM "genres" ORDER BY "id";`).then(
+    pool.query(`SELECT * FROM "genres" ORDER BY "name";`).then(
         result => {
             res.send(result.rows);
         }
