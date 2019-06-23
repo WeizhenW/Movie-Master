@@ -1,6 +1,8 @@
 # MOVIE MASTER PROJECT
 Movie Master is an app with a movie database, which will provide you information such as movie title, description, poster, and genres etc.
 
+Deployed version at: https://movie-master-2019.herokuapp.com/#/
+
 # FEATURES
 User will be able to:
 - check the basic information of 10 movies on home page (alphabetic order by movie title)
