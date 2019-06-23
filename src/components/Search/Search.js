@@ -5,10 +5,23 @@ import './Search.css';
 //material ui
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+// import SearchIcon from '@material-ui/icons/Search';
+
+
 
 const styles = {
     button: {
         margin: 20,
+    },
+    search: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        marginTop: 10,
+        marginLeft: 10,
+        color: 'blue',
+
     }
 }
 class Search extends Component {
@@ -38,6 +51,7 @@ class Search extends Component {
     render() {
         return (
             <div className="searchDiv">
+                {/* <SearchIcon style={styles.search}/> */}
                 <TextField 
                 variant="outlined"
                 placeholder="search a movie by title" 

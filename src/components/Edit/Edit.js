@@ -5,6 +5,28 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
 
 import Detail from '../Detail/Detail';
 
+//material ui
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
+const styles = {
+    card: {
+        width: '50%',
+        margin: '20px auto',
+        padding: 20,
+    },
+    button: {
+        margin: '20px',
+    },
+    textfield: {
+        margin: '20px auto',
+    }
+}
 
 class Edit extends Component {
     //initialize state with reducer state
@@ -39,26 +61,25 @@ class Edit extends Component {
     render() {
         return (
             <div>
-                <input
-                    placeholder="title"
-                    value={this.state.movie.title}
-                    onChange={this.handleChangeFor('title')} />
-                <br />
-                <textarea
-                    // type="textarea" 
-                    placeholder="description"
-                    value={this.state.movie.description}
-                    onChange={this.handleChangeFor('description')} />
-                <br />
-                <button onClick={this.handleCancel}>Cancel</button>
-                <br />
-                <button onClick={this.handleSave}>Save</button>
-
-                <br />
-
-                <img src={this.props.reduxState.oneMovie[0].poster} />
-                <h3>{this.props.reduxState.oneMovie[0].title}</h3>
-                <p>{this.props.reduxState.oneMovie[0].description}</p>
+                <Card style={styles.card}>
+                    <TextField style={styles.textfield}
+                        fullWidth
+                        variant="outlined"
+                        placeholder="title"
+                        value={this.state.movie.title}
+                        onChange={this.handleChangeFor('title')} />
+                    <br />
+                    <TextField style={styles.textfield}
+                        fullWidth
+                        multiline
+                        variant="outlined"
+                        placeholder="description"
+                        value={this.state.movie.description}
+                        onChange={this.handleChangeFor('description')} />
+                    <br />
+                    <Button style={styles.button} variant="outlined" color="secondary" onClick={this.handleCancel}>Cancel</Button>
+                    <Button style={styles.button} variant="outlined" color="primary" onClick={this.handleSave}>Save</Button>
+                </Card>
             </div>
         );
     }
