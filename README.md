@@ -26,6 +26,12 @@ There is also an admin interface which requires login (not secured for now). Use
 2. `npm run server`
 3. `npm run client`
 
+## Built with
+- React (including redux and sagas) as front-end framework
+- Node.js/Express for server
+- PostgreSQL as database
+- Material-UI for UI styling
+
 ## Detailed Feature List
 
 ### Home / List Page
