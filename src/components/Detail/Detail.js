@@ -96,11 +96,6 @@ class Detail extends Component {
                 </Router>
                 {/* buttons */}
                 <Card style={styles.card}>
-                    <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
-                    <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
-                    <br />
-                    <br />
-
                     <Grid container style={styles.grid}>
                         <Grid item sm={12} md={8}>
                             <CardMedia>
@@ -111,6 +106,9 @@ class Detail extends Component {
                                 <h3>{this.props.reduxState.oneMovie[0].title}</h3>
                                 <p>{this.props.reduxState.oneMovie[0].description}</p>
                             </CardContent>
+
+                            <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
+                            <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
                         </Grid>
 
                         {/* below display the genres */}
@@ -129,8 +127,9 @@ class Detail extends Component {
                                         return <MenuItem style={styles.menuItem} value={genre.id} key={genre.id}>{genre.name}</MenuItem>
                                     })}
                                 </Select>
-                                <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add Genre</Button>
+                                <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add</Button>
                             </FormControl>
+                            <p>Click genre tag to remove</p>
                             <br />
                             {this.props.reduxState.oneMovieGenres.map(genre => {
                                 return <button
@@ -147,6 +146,10 @@ class Detail extends Component {
 
                         </Grid>
                     </Grid>
+
+
+                    <br />
+                    <br />
                 </Card>
             </div>
         );

@@ -10,7 +10,7 @@ class Admin extends Component {
   state = {
     userName: '',
     password: '',
-    correctLogin: true,
+    correctLogin: false,
   }
   handleChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -19,7 +19,7 @@ class Admin extends Component {
   }
 
   handleSubmit = () => {
-    if(this.state.userName==='Weizhen' && this.state.password==='1234') {
+    if(this.state.userName==='camera' && this.state.password==='action') {
       this.setState({
         correctLogin: true,
       })

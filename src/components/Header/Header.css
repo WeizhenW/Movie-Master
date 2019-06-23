@@ -1,5 +1,5 @@
 nav {
-    text-align: right;
+    text-align: left;
     margin-right: 40px;
 }
 
@@ -16,4 +16,8 @@ a {
     color: white;
     font-weight: 600;
     font-size: 18px;
+}
+
+h1 {
+    font-size: 40px;
 }

@@ -60,7 +60,7 @@ class Search extends Component {
                     fullWidth></TextField>
                 <br />
                 <Button style={styles.button} variant="contained" color="primary" onClick={this.handleSearch}>Search</Button>
-                <Button id="cancelButton" style={styles.button} variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
+                <Button id="cancelButton" style={styles.button} variant="contained" color="secondary" onClick={this.handleGoBack}>Reset</Button>
             </div>
         );
     }

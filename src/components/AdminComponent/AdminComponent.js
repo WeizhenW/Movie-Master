@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-
+import './AdminComponent.css';
 
 const styles = {
     table: {
@@ -86,7 +86,7 @@ class AdminComponent extends Component {
                         {this.props.reduxState.allGenres.map(genre => {
                             return <TableRow key={genre.id}>
                                 <TableCell>{genre.name}</TableCell>
-                                <TableCell><button id={genre.id} onClick={this.handleDelete}>X</button></TableCell>
+                                <TableCell><button className="deleteButton" id={genre.id} onClick={this.handleDelete}>X</button></TableCell>
                             </TableRow>
                         })}
                     </TableBody>
