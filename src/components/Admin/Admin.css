@@ -1,0 +1,20 @@
+.loginDiv {
+    margin: 200px auto;
+}
+
+#userName {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 50px;
+}
+
+#psw {
+    height: 30px;
+    width: 200px;
+    margin-bottom: 60px;
+}
+
+input {
+    font-size: 18px;
+
+}

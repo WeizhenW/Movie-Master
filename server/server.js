@@ -19,9 +19,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/api/movies', moviesRouter)
 app.use('/api/genres', genresRouter)
 
-
-
-
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
     console.log('Listening on port: ', port);

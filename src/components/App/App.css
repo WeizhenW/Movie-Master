@@ -10,6 +10,19 @@
   color: white;
 }
 
+.header {
+  background-color: #3a4660;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color:#3a4660;
+  padding: 10px;
+  color: white;
+}
+
 .App-title {
   font-size: 1.5em;
 }
@@ -22,3 +35,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+body {
+  background-color: #c9af98;
+}
+

@@ -1,0 +1,23 @@
+nav {
+    text-align: left;
+    margin-right: 40px;
+}
+
+a {
+    text-decoration: none;
+    margin-left: 50px;
+    text-align: right;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+.active {
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 40px;
+}

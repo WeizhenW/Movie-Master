@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+//component
 import OneMovie from '../OneMovie/OneMovie';
 import Search from '../Search/Search';
+import AllGenres from '../AllGenres/AllGenres';
+import './MovieList.css'
+//material ui
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 
-import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
-
-
-
-
+const styles = {
+  card: {
+    width: '80%',
+    margin: '20px auto',
+  },
+  paper: {
+    width: '78%',
+    margin: '20px auto',
+    padding: 20,
+  }
+}
 class MovieList extends Component {
   //call getMovie function at page load
   componentDidMount() {
@@ -31,27 +44,22 @@ class MovieList extends Component {
   render() {
     return (
       <div>
-        <h1>Movie Master</h1>
-        <Search />
-        <Link to="/admin">Go to Admin</Link>
-        <ul>
-          {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
-        </ul>
-
-        {/* display movie genres by using array agg */}
-        <h3>All Genres per Movie</h3>
-        <ul>
-          {this.props.reduxState.allGenresPerMovie.map(movie => {
-            return <li key={movie.title}>{movie.title}
-              <ul>
-                {movie.genres.map(genre => {
-                  return <li key={genre}>{genre}</li>
-                })}
-              </ul>
-            </li>
-          })}
-        </ul>
-
+        <Card style={styles.card}>
+          <Search />
+        </Card>
+        <Paper style={styles.paper}>
+          <Grid container spacing={3}>
+            <Grid item sm={12} md={8}>
+              <Grid container>
+                {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
+              </Grid>
+            </Grid>
+            <Grid item sm={12} md={4}>
+              {/* display movie genres by using array agg */}
+              <AllGenres />
+            </Grid>
+          </Grid>
+        </Paper>
       </div>
     );
   }

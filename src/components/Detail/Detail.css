@@ -1,0 +1,14 @@
+.genreTag {
+    background-color: white;
+    height: 30px;
+    width: 80px;
+    margin: 10px 20px;
+    border: solid 1px #05680a;
+    border-radius: 8px;
+    color: #05680a;
+    box-shadow: 2px 3px #05680a;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+
+}
