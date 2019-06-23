@@ -5,28 +5,31 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
 
 import Edit from '../Edit/Edit';
 
+import './Detail.css';
+
 //material ui
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+
 
 
 const styles = {
     card: {
         width: '60%',
         margin: '20px auto',
-        padding: 20,
+        padding: 10,
     },
     button: {
         margin: '20px',
     },
     grid: {
-        width: '60%',
+        width: '90%',
         margin: '20px auto',
     },
     menuItem: {
@@ -88,62 +91,62 @@ class Detail extends Component {
     render() {
         return (
             <div>
-                {/* {JSON.stringify(this.props.match)} */}
                 <Router>
                     <Route path="/edit" component={Edit} />
                 </Router>
                 {/* buttons */}
                 <Card style={styles.card}>
-                <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
-                <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
-                <br />
-                <br />
-                
-                
-                    <CardMedia>
-                        <img src={this.props.reduxState.oneMovie[0].poster} />
-                    </CardMedia>
-                    <CardHeader>
-                    <h3>{this.props.reduxState.oneMovie[0].title}</h3>
-                    </CardHeader>
-                    <CardContent>
-                    <p>{this.props.reduxState.oneMovie[0].description}</p>
-                    </CardContent>
-                
-                {/* below display the genres */}
-                <Grid container style={styles.grid}>
-                    <Grid item sm={12} md={6}>
-                <h3>This Movie's Genres</h3>
-                
-                    {this.props.reduxState.oneMovieGenres.map(genre => {
-                        return <button
-                            // display genre name
-                            key={genre.genre_id}
-                            // button click to delete
-                            onClick={this.handleDeleteGenre} 
-                            id={genre.genre_id}
-                            variant="contained"
-                            color="primary"
-                            style={styles.button}>
-                            {genre.name}
-                        </button>
-                    })}
-                </Grid>
+                    <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
+                    <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
+                    <br />
+                    <br />
 
-                <Grid item sm={12} md={6}>
-                <h3>All Genres</h3>
-                {/* create ddl */}
-                <Select onChange={this.handleChangeGenre}>
-                    {/* default selection at page load => disabled so that won't be selected */}
-                    <MenuItem style={styles.menuItem} disabled>Please select</MenuItem>
-                    {this.props.reduxState.allGenres.map(genre => {
-                        // value used to pass the selected genre id to server
-                        return <MenuItem style={styles.menuItem} value={genre.id} key={genre.id}>{genre.name}</MenuItem>
-                    })}
-                </Select>
-                <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add Genre</Button>
-                </Grid>
-                </Grid>
+                    <Grid container style={styles.grid}>
+                        <Grid item sm={12} md={8}>
+                            <CardMedia>
+                                <img src={this.props.reduxState.oneMovie[0].poster} />
+                            </CardMedia>
+                            <CardContent>
+
+                                <h3>{this.props.reduxState.oneMovie[0].title}</h3>
+                                <p>{this.props.reduxState.oneMovie[0].description}</p>
+                            </CardContent>
+                        </Grid>
+
+                        {/* below display the genres */}
+                        <Grid item sm={12} md={4}>
+                            <h3>Add New Genres:</h3>
+
+                            {/* create ddl */}
+                            <FormControl>
+                                <Select
+                                    value={this.state.genreId}
+                                    onChange={this.handleChangeGenre}>
+                                    {/* default selection at page load => disabled so that won't be selected */}
+                                    <MenuItem value=""><em></em></MenuItem>
+                                    {this.props.reduxState.allGenres.map(genre => {
+                                        // value used to pass the selected genre id to server
+                                        return <MenuItem style={styles.menuItem} value={genre.id} key={genre.id}>{genre.name}</MenuItem>
+                                    })}
+                                </Select>
+                                <Button style={styles.button} onClick={this.handleAddGenre} variant="contained" color="primary">Add Genre</Button>
+                            </FormControl>
+                            <br />
+                            {this.props.reduxState.oneMovieGenres.map(genre => {
+                                return <button
+                                    // display genre name
+                                    key={genre.genre_id}
+                                    // button click to delete
+                                    onClick={this.handleDeleteGenre}
+                                    id={genre.genre_id}
+                                    className="genreTag">
+                                    {genre.name}
+                                </button>
+                            })}
+
+
+                        </Grid>
+                    </Grid>
                 </Card>
             </div>
         );

@@ -56,7 +56,6 @@ function* putOneMovie(action) {
 function* getGenresOneMovie(action) {
     try {
         const responseGenresOneMovie = yield axios.get(`/api/genres/${action.payload}`);
-        // console.log(responseGenresOneMovie);
         yield put({
             type: 'SET_GENRES_ONE_MOVIE',
             payload: responseGenresOneMovie.data,

@@ -7,7 +7,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import DeleteIcon from '@material-ui/icons/Delete';
+import Paper from '@material-ui/core/Paper';
+
 
 
 const styles = {
@@ -17,11 +18,13 @@ const styles = {
         fontSize: '16px',
         textAlign: 'center',
     },
-    deleteIcon: {
-        color: 'red',
-    },
     button: {
         marginLeft: 30,
+    },
+    paper: {
+        width: '75%',
+        margin: '20px auto',
+        padding: 20,
     }
 }
 
@@ -59,7 +62,7 @@ class AdminComponent extends Component {
 
     render() {
         return (
-            <div>
+            <Paper style={styles.paper}>
                 <TextField
                     placeholder="add genre"
                     variant="outlined"
@@ -88,7 +91,7 @@ class AdminComponent extends Component {
                         })}
                     </TableBody>
                 </Table>
-            </div>
+            </Paper>
         );
     }
 }

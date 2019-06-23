@@ -45,22 +45,22 @@ class Search extends Component {
     handleGoBack = () => {
         this.props.dispatch({
             type: 'FETCH_ALL_MOVIES',
-          })
+        })
     }
 
     render() {
         return (
             <div className="searchDiv">
                 {/* <SearchIcon style={styles.search}/> */}
-                <TextField 
-                variant="outlined"
-                placeholder="search a movie by title" 
-                value={this.state.movieName} 
-                onChange={this.handleNameInput}
-                fullWidth></TextField>
+                <TextField
+                    variant="outlined"
+                    placeholder="search a movie by title"
+                    value={this.state.movieName}
+                    onChange={this.handleNameInput}
+                    fullWidth></TextField>
                 <br />
                 <Button style={styles.button} variant="contained" color="primary" onClick={this.handleSearch}>Search</Button>
-                <Button style={styles.button} variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
+                <Button id="cancelButton" style={styles.button} variant="contained" color="secondary" onClick={this.handleGoBack}>Go back</Button>
             </div>
         );
     }

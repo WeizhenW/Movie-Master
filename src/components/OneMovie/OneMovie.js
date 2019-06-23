@@ -21,11 +21,12 @@ class OneMovie extends Component {
         return (
             <>
                 <Grid item sm={12} md={4}>
-                <img src={this.props.movie.poster} onClick={this.handleClickPoster} />
+                <img className="poster" src={this.props.movie.poster} onClick={this.handleClickPoster} />
                 </Grid>
                 <Grid style={styles.grid} item sm={12} md={8}>
                 <h3>{this.props.movie.title}</h3>
                 <p>{this.props.movie.description}</p>
+                <hr />
                 </Grid>
             </>
         );

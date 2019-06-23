@@ -11,11 +11,31 @@ import Admin from '../Admin/Admin';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
+//material ui
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const ourTheme = createMuiTheme({
+  palette: { 
+    primary: {
+      main: '#3a4660',
+    },
+    secondary: {
+      main: '#ed8a63', 
+    },
+    error: {
+      main: '#c62828',
+    }
+  }
+
+})
 
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
     return (
+      <MuiThemeProvider theme={ourTheme}>
+
       <div className="App">
         <Header />
         <Router>
@@ -27,6 +47,7 @@ class App extends Component {
         {/* <MovieList /> */}
         <Footer />
       </div>
+      </MuiThemeProvider>
     );
   }
 }
