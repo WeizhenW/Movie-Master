@@ -39,8 +39,9 @@ router.get('/', (req, res) => {
 //route to search for a specific movie
 router.get('/search', (req, res) => {
     console.log(req.query);
-    pool.query(`SELECT * FROM "movies" WHERE "title" = $1;`,
-    [req.query.title]).then(
+    pool.query(`SELECT * FROM "movies" WHERE "title" LIKE $1;`,
+    ['%' + req.query.title + '%']
+    ).then(
         result => {
             res.send(result.rows);
         }
@@ -60,7 +61,7 @@ router.get('/:id', (req, res) => {
         }
     ).catch(
         error => {
-            console.log('error with get all movies', error);
+            console.log('error with get one movie', error);
             res.sendStatus(500);
         }
     )
