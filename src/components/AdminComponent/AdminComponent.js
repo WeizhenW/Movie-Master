@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+//material ui
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
@@ -32,26 +34,26 @@ class AdminComponent extends Component {
     state = {
         genre: '',
     }
-
+    //after components mounted, dispatch action to get all genre from db
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ALL_GENRES'
         })
     };
-
+    //get input
     handleChange = (event) => {
         this.setState({
             genre: event.target.value,
         })
     }
-
+    //on click dispatch action to post
     handleClick = () => {
         this.props.dispatch({
             type: 'POST_NEW_GENRE',
             payload: this.state,
         })
     }
-
+    //on click dispatch action to delete
     handleDelete = (event) => {
         console.log(event.target);
         this.props.dispatch({
@@ -67,7 +69,6 @@ class AdminComponent extends Component {
                     placeholder="add genre"
                     variant="outlined"
                     onChange={this.handleChange} />
-
                 <Button
                     variant="contained"
                     color="primary"

@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
 
-
 const styles = {
   card: {
     width: '80%',
@@ -46,20 +45,20 @@ class MovieList extends Component {
     return (
       <div>
         <Card style={styles.card}>
-        <Search />
+          <Search />
         </Card>
         <Paper style={styles.paper}>
-        <Grid container spacing={3}>
-          <Grid item sm={12} md={8}>
-            <Grid container>
-              {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
+          <Grid container spacing={3}>
+            <Grid item sm={12} md={8}>
+              <Grid container>
+                {this.props.reduxState.movies.map(movie => <OneMovie history={this.props.history} key={movie.id} movie={movie} />)}
+              </Grid>
+            </Grid>
+            <Grid item sm={12} md={4}>
+              {/* display movie genres by using array agg */}
+              <AllGenres />
             </Grid>
           </Grid>
-          <Grid item sm={12} md={4}>
-            {/* display movie genres by using array agg */}
-            <AllGenres />
-          </Grid>
-        </Grid>
         </Paper>
       </div>
     );

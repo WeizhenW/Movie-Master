@@ -14,7 +14,6 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './redux/reducers/movie.reducer';
 import rootSaga from './redux/sagas/index';
 
-
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 

@@ -5,9 +5,6 @@ import './Search.css';
 //material ui
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-// import SearchIcon from '@material-ui/icons/Search';
-
-
 
 const styles = {
     button: {
@@ -21,7 +18,6 @@ const styles = {
         marginTop: 10,
         marginLeft: 10,
         color: 'blue',
-
     }
 }
 class Search extends Component {
@@ -34,14 +30,14 @@ class Search extends Component {
             movieName: event.target.value,
         })
     }
-
+    //on click to dispatch action to query the database with movie name entered
     handleSearch = () => {
         this.props.dispatch({
             type: 'GET_SEARCH_RESULT',
             payload: this.state.movieName,
         })
     };
-
+    //on click to dispatch action to get all movies
     handleGoBack = () => {
         this.props.dispatch({
             type: 'FETCH_ALL_MOVIES',
@@ -51,7 +47,6 @@ class Search extends Component {
     render() {
         return (
             <div className="searchDiv">
-                {/* <SearchIcon style={styles.search}/> */}
                 <TextField
                     variant="outlined"
                     placeholder="search a movie by title"

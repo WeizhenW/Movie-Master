@@ -44,13 +44,10 @@ class AllGenres extends Component {
                                     })}
                                 </TableCell>
                             </TableRow>
-
                         })}
                     </TableBody>
                 </Table>
             </div>
-
-
         );
     }
 }

@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//router
-import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
-
-import Detail from '../Detail/Detail';
 
 //material ui
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 const styles = {

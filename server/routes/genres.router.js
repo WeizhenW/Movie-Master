@@ -97,6 +97,4 @@ router.delete('/:movieid/:genreid', (req, res) => {
     )
 })
 
-
-
 module.exports =router;

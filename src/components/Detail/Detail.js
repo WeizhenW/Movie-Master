@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //router
 import { HashRouter as Router, Route, Link } from 'react-router-dom'; //alias
-
+//component
 import Edit from '../Edit/Edit';
-
+//style sheet
 import './Detail.css';
 
 //material ui
@@ -16,8 +16,6 @@ import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-
-
 
 const styles = {
     card: {
@@ -94,7 +92,7 @@ class Detail extends Component {
                 <Router>
                     <Route path="/edit" component={Edit} />
                 </Router>
-                {/* buttons */}
+                {/* buttons below */}
                 <Card style={styles.card}>
                     <Grid container style={styles.grid}>
                         <Grid item sm={12} md={8}>
@@ -102,19 +100,15 @@ class Detail extends Component {
                                 <img src={this.props.reduxState.oneMovie[0].poster} />
                             </CardMedia>
                             <CardContent>
-
                                 <h3>{this.props.reduxState.oneMovie[0].title}</h3>
                                 <p>{this.props.reduxState.oneMovie[0].description}</p>
                             </CardContent>
-
                             <Link to="/"><Button style={styles.button} variant="outlined" color="primary">Back</Button></Link>
                             <Link to="/edit"><Button style={styles.button} variant="outlined" color="secondary">Edit</Button></Link>
                         </Grid>
-
                         {/* below display the genres */}
                         <Grid item sm={12} md={4}>
                             <h3>Add New Genres:</h3>
-
                             {/* create ddl */}
                             <FormControl>
                                 <Select
@@ -142,12 +136,8 @@ class Detail extends Component {
                                     {genre.name}
                                 </button>
                             })}
-
-
                         </Grid>
                     </Grid>
-
-
                     <br />
                     <br />
                 </Card>
