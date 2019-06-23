@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //material ui
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,8 +9,17 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 const styles = {
-    table: {
-        margin: 20,
+    tableHead: {
+        fontSize: 20,
+        textAlign: 'center',
+    },
+    tableBody1: {
+        fontSize: 16,
+        width: '30%',
+    },
+    tableBody2: {
+        fontSize: 16,
+        width: '70%',
     }
 }
 class AllGenres extends Component {
@@ -20,18 +27,18 @@ class AllGenres extends Component {
         return (
             <div>
                 <h3>All Genres per Movie</h3>
-                <Table style={styles.table}>
+                <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Movie</TableCell>
-                            <TableCell>Genres</TableCell>
+                            <TableCell style={styles.tableHead}>Movie</TableCell>
+                            <TableCell style={styles.tableHead}>Genres</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.reduxState.allGenresPerMovie.map(movie => {
                             return <TableRow key={movie.title}>
-                                <TableCell>{movie.title}</TableCell>
-                                <TableCell>
+                                <TableCell style={styles.tableBody1}>{movie.title}</TableCell>
+                                <TableCell style={styles.tableBody2}>
                                     {movie.genres.map(genre => {
                                         return <li key={genre}>{genre}</li>
                                     })}
