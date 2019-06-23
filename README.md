@@ -39,8 +39,6 @@ The details page should have the buttons:
 - `Back to List` button, which should bring the user to the Home Page
 - `Edit` button, which should bring the user to the Edit Page
 
-> Base functionality does not require the movie details to load correctly after refresh of the browser.
-
 ### Edit Page
 
 This should show:
@@ -52,10 +50,6 @@ The details page should have the buttons:
 
 - `Cancel` button, which should bring the user to the Details Page
 - `Save` button, which should update the title and description in the database and bring the user to the Details Page
-
-> Base functionality does not require the current values (the existing movie title and description) to populate in the input and textarea.
-
-> Base functionality does not require the movie information to load correctly after refresh of the browser.
 
 ### General Tasks
 
