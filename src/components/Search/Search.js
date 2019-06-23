@@ -35,6 +35,9 @@ class Search extends Component {
         this.props.dispatch({
             type: 'GET_SEARCH_RESULT',
             payload: this.state.movieName,
+        });
+        this.setState({
+            movieName: '',
         })
     };
     //on click to dispatch action to get all movies

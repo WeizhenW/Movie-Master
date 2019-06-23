@@ -52,6 +52,9 @@ class AdminComponent extends Component {
             type: 'POST_NEW_GENRE',
             payload: this.state,
         })
+        this.setState({
+            genre: '',
+        })
     }
     //on click dispatch action to delete
     handleDelete = (event) => {
@@ -68,6 +71,7 @@ class AdminComponent extends Component {
                 <TextField
                     placeholder="add genre"
                     variant="outlined"
+                    value={this.state.genre}
                     onChange={this.handleChange} />
                 <Button
                     variant="contained"

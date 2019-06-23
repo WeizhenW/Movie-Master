@@ -71,8 +71,10 @@ class Detail extends Component {
         this.props.dispatch({
             type: 'ADD_GENRE_TO_MOVIE',
             payload: this.state,
-        }
-        )
+        });
+        this.setState({
+            genreId: '',
+        });
     }
     //function to dispatch to trigger the delete route
     handleDeleteGenre = (event) => {

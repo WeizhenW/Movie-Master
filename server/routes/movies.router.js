@@ -10,7 +10,8 @@ router.get('/allgenres', (req, res) => {
     FROM "movies"
     JOIN "movie_genre" ON  "movies"."id"="movie_genre"."movie_id"
     JOIN "genres" ON "genres"."id"="movie_genre"."genre_id"
-    GROUP BY "movies"."title";`).then(
+    GROUP BY "movies"."title"
+    ORDER BY "movies"."title";`).then(
         result => {
             res.send(result.rows);
         }
@@ -24,7 +25,7 @@ router.get('/allgenres', (req, res) => {
 
 //route to get all movies
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM "movies" ORDER BY "id" LIMIT 10;`).then(
+    pool.query(`SELECT * FROM "movies" ORDER BY "title" LIMIT 10;`).then(
         result => {
             res.send(result.rows);
         }
@@ -39,7 +40,8 @@ router.get('/', (req, res) => {
 //route to search for a specific movie
 router.get('/search', (req, res) => {
     console.log(req.query);
-    pool.query(`SELECT * FROM "movies" WHERE "title" LIKE $1;`,
+    pool.query(`SELECT * FROM "movies" WHERE "title" iLIKE $1
+        ORDER BY "title";`,
     ['%' + req.query.title + '%']
     ).then(
         result => {
@@ -52,6 +54,7 @@ router.get('/search', (req, res) => {
         }
     )
 })
+
 //route to get one movie
 router.get('/:id', (req, res) => {
     pool.query(`SELECT * FROM "movies" WHERE "id"=$1`,
