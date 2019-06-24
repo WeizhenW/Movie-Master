@@ -1,6 +1,8 @@
 # MOVIE MASTER PROJECT
 Movie Master is an app with a movie database, which will provide you information such as movie title, description, poster, and genres etc.
 
+Deployed version at: https://movie-master-2019.herokuapp.com/#/
+
 # FEATURES
 User will be able to:
 - check the basic information of 10 movies on home page (alphabetic order by movie title)
@@ -23,6 +25,12 @@ There is also an admin interface which requires login (not secured for now). Use
 1. `npm install`
 2. `npm run server`
 3. `npm run client`
+
+## Built with
+- React (including redux and sagas) as front-end framework
+- Node.js/Express for server
+- PostgreSQL as database
+- Material-UI for UI styling
 
 ## Detailed Feature List
 
