@@ -28,6 +28,16 @@ const oneMovie = (state = initialOneMovieState, action) => {
     }
 }
 
+//reducer to store information back from omdb
+const movieOmdb = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_OMDB_Movie':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // reducer to store the genres for all movies
 const allGenres = (state = [], action) => {
     switch (action.type) {
@@ -63,7 +73,8 @@ const rootReducer = combineReducers({
     oneMovie,
     allGenres,
     oneMovieGenres,
-    allGenresPerMovie
+    allGenresPerMovie,
+    movieOmdb,
 })
 
 export default rootReducer;

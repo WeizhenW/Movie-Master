@@ -43,9 +43,7 @@ function* putOneMovie(action) {
 //generator to get one specific movie
 function* searchOneMovie(action) {
     try {
-        console.log(action);
         const oneMovieResponse = yield axios.get(`/api/movies/search?title=${action.payload}`)
-        console.log(oneMovieResponse);
         yield put({
             type: 'SET_MOVIES',
             payload: oneMovieResponse.data,
@@ -55,12 +53,26 @@ function* searchOneMovie(action) {
     }
 }
 
+//generator to get omdb movie
+function* searchOMDB(action) {
+    try{
+        const omdbResponse = yield axios.get(`/api/omdbsearch?title=${action.payload}`);
+        yield put({
+            type: 'SET_OMDB_Movie',
+            payload: omdbResponse.data,
+        })
+    } catch (error) {
+        console.log('error with search omdb', error);
+    }
+}
+
 //create watcherSaga
 function* watcherSaga() {
     yield takeEvery('FETCH_ALL_MOVIES', getAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', getOneMovie);
     yield takeEvery('UPDATE_ONE_MOVIE', putOneMovie);
     yield takeEvery('GET_SEARCH_RESULT', searchOneMovie);
+    yield takeEvery('GET_OMDB_RESULT', searchOMDB);
 }
 
 export default watcherSaga;

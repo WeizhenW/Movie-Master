@@ -15,6 +15,7 @@ import Footer from '../Footer/Footer';
 //material ui
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { createMuiTheme } from '@material-ui/core/styles';
+import OmdbSearch from '../OmdbSearch/OmdbSearch';
 
 //define theme
 const ourTheme = createMuiTheme({
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/details/:id" exact component={Detail} />
             <Route path="/edit" component={Edit} />
             <Route path="/admin" component={Admin} />
+            <Route path="/omdbsearch" component={OmdbSearch} />
           </Router>
           <Footer />
         </div>
