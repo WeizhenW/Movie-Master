@@ -16,6 +16,7 @@ class Header extends Component {
                         <nav>
                             <NavLink activeClassName="active" exact to="/">Home</NavLink>
                             <NavLink activeClassName="active" to="/admin" >Admin</NavLink >
+                            <NavLink activeClassName="active" to="/omdbsearch" >Search OMDB</NavLink >
                         </nav>
                     </Router>
                 </div>

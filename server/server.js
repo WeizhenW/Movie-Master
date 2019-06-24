@@ -8,7 +8,7 @@ const pool = require('./modules/pool');
 //routers
 const moviesRouter = require('./routes/movies.router');
 const genresRouter = require('./routes/genres.router');
-
+const omdbRouter = require('./routes/omdbsearch.router');
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); // needed for angular requests
 app.use(express.static('build'));
@@ -16,8 +16,9 @@ app.use(express.static('build'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 /** ---------- ROUTES ---------- **/
-app.use('/api/movies', moviesRouter)
-app.use('/api/genres', genresRouter)
+app.use('/api/movies', moviesRouter);
+app.use('/api/genres', genresRouter);
+app.use('/api/omdbsearch', omdbRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

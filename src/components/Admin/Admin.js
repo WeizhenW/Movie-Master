@@ -46,8 +46,6 @@ class Admin extends Component {
             <Button variant="contained" color="primary" onClick={this.handleSubmit}>Log In</Button>
           </div>
         }
-
-
       </div>
     );
   }
