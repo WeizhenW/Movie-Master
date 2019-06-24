@@ -1,5 +1,5 @@
 # MOVIE MASTER PROJECT
-Movie Master is an app with a movie database, which will provide you information such as movie title, description, poster, and genres etc.
+Movie Master is an app with its own movie database, which will provide you information such as movie title, description, poster, and genres etc. And it also connects to OMDB API, where you get search movie by title and get title, poster, year, released date and director displayed.
 
 Deployed version at: https://movie-master-2019.herokuapp.com/#/
 
@@ -11,6 +11,7 @@ User will be able to:
 - edit the title and/or description of a selected movie and save
 - add/remove a genre for a selected movie
 - search movie by title keyword (case insensitive, support ambiguous match)
+- search movie by title from OMDB (link from nav bar)
 
 There is also an admin interface which requires login (not secured for now). User will be able to add/remove genres after logging into the admin page.
 
